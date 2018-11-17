@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="@dimen/d_6dp"
+    android:layout_margin="@dimen/d_40dp"
+    android:layout_gravity="center"
+    app:cardCornerRadius="@dimen/d_6dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_marginBottom="@dimen/d_8dp"
+            android:layout_marginTop="@dimen/d_8dp"
+            android:gravity="center"
+            android:padding="@dimen/d_6dp"
+            android:maxLines="2"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/d_18sp"
+            android:layout_gravity="center"
+            android:text="Why are you reporting this comment ?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:background="@color/c_google_grey"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/tv_spam"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/d_12dp"
+            android:text="It's spam"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/d_14sp" />
+        <View
+            android:background="@color/c_google_grey"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_abusive"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/d_12dp"
+            android:text="Abusive content"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/d_14sp" />
+
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

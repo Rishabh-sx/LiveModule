@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="c_gray">#9F9F9F</color>
+    <color name="c_google_grey">#ededed</color>
+    <color name="c_off_white">#F9F9F9</color>
+    <color name="c_green">#00b21E</color>
+    <color name="c_white_opaque">#60FFFFFF</color>
+    <!--Wowza-->
+    <color name="controlButtonPressed">#80ff8400</color>
+    <color name="multiStateButtonPressed">#80ff8400</color>
+    <color name="multiStateButtonDisabled">#c1636363</color>
+    <color name="c_transparent_black">#80080808</color>
+    <color name="c_comment_bar_stroke">#CDCED2</color>
+    <color name="c_comment_bar_bg">#F9F9F9</color>
+    <color name="c_cbd_start">#37DB5A</color>
+    <color name="c_cbd_center">#7DE15A</color>
+    <color name="c_cbd_end">#C3E85A</color>
+
+</resources>
