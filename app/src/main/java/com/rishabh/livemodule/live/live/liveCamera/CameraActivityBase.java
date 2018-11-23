@@ -22,7 +22,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -43,9 +42,6 @@ import com.wowza.gocoder.sdk.api.status.WOWZStatus;
 
 import java.util.Arrays;
 
-/**
- * Created by Rishabh Saxena.
- */
 
 abstract public class CameraActivityBase extends GoCoderSDKActivityBase
         implements WOWZCameraView.PreviewStatusListener{
@@ -74,7 +70,7 @@ abstract public class CameraActivityBase extends GoCoderSDKActivityBase
     }
 
     //define callback interface
-    public interface PermissionCallbackInterface {
+    interface PermissionCallbackInterface {
 
         void onPermissionResult(boolean result);
     }
@@ -226,7 +222,7 @@ abstract public class CameraActivityBase extends GoCoderSDKActivityBase
             /*    if (mStatusView != null)
                     mStatusView.setStatus(goCoderStatus);*/
 
-                Log.e("Status Wowza", String.valueOf(goCoderStatus.getState()));
+//                Log.e("Status Wowza", String.valueOf(goCoderStatus.getState()));
                 syncUIControlState();
             }
         });

@@ -33,15 +33,18 @@ public class LivePresenter extends BasePresenter<LiveView> implements LiveModelL
       String s =   model.getUserId();
       if(getView()!=null)
       {
-          getView().setStreamId(generateStreamId(s));
+          //getView().setStreamId(generateStreamId(s));
           getView().setupLiveStream();
       }
     }
 
     private String generateStreamId(String s) {
-      //  return "myStream";
        return  SystemClock.currentThreadTimeMillis()+s;
 
     }
 
+    public void getIntentData() {
+    if(getView()!=null)
+        getView().getIntentData();
+    }
 }

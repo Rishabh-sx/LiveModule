@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.goodlife.green"
+        applicationId "com.rishabh.livemodule"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -16,11 +16,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-   /* compileOptions {
+    /* compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-*/}
+*/
+}
 repositories {
     flatDir {
         dirs 'libs'

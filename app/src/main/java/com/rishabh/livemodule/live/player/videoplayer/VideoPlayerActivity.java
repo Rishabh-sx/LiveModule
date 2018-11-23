@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
 import com.google.android.exoplayer2.ui.PlayerView;
+import com.rishabh.livemodule.utils.AppConstants;
 import com.rishabh.livemodule.utils.PlayerManager;
 import com.rishabh.livemodule.R;
 import com.rishabh.livemodule.live.player.playeroverlay.PlayerOverlayActivity;
@@ -32,13 +33,17 @@ public class VideoPlayerActivity extends Activity implements PlayerManager.Event
     private String mStreamURL;
     private LiveIntentData intentData;
     private BroadcastReceiver playerOverlayActivityReceiver;
+    private String email;
+    private String name;
+    private String streamId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_player);
         ButterKnife.bind(this);
-        getDataFromIntent();
+      //  getDataFromIntent();
+            getIntentData();
     }
 
     private void getDataFromIntent() {
@@ -53,6 +58,12 @@ public class VideoPlayerActivity extends Activity implements PlayerManager.Event
         }
     }
 
+    public void getIntentData() {
+        email = getIntent().getStringExtra(AppConstants.EMAIL);
+        name = getIntent().getStringExtra(AppConstants.NAME);
+        streamId = getIntent().getStringExtra(AppConstants.STREAMID);
+    }
+
     private void initPlayer() {
         playerManager = new PlayerManager(this, this);
     }
@@ -65,7 +76,7 @@ public class VideoPlayerActivity extends Activity implements PlayerManager.Event
     public void onStart() {
         super.onStart();
         setupReceivers();
-        initPlayer();
+        //initPlayer();
     }
 
     @Override
@@ -85,7 +96,10 @@ public class VideoPlayerActivity extends Activity implements PlayerManager.Event
 
     private void openPlayerOverlay() {
         startActivityForResult(new Intent(this, PlayerOverlayActivity.class)
-                        .putExtra("data", intentData)
+                       // .putExtra("data", intentData)
+                        .putExtra(AppConstants.STREAMID, streamId)
+                        .putExtra(AppConstants.NAME, name)
+                        .putExtra(AppConstants.EMAIL, email)
                 , REQUEST_CODE_FINISH);
     }
 

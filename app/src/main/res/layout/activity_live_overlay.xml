@@ -179,7 +179,7 @@
 
     </android.support.v4.widget.NestedScrollView>
 
-    <com.goodlife.modules.livemodule.ui.StatusView
+    <com.rishabh.livemodule.live.ui.StatusView
         android:id="@+id/statusView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -6,14 +6,14 @@ package com.rishabh.livemodule.live.config;
 
 public class WowzaConfigConstants {
 
+   public static final boolean SCALE_TO_ASPECT_RATIO = false;
 
-    public static final boolean SCALE_TO_ASPECT_RATIO = false;
     //Server Config
-    public static String HOST_ADDRESS = "184.169.197.143";
+    public static String HOST_ADDRESS = "appskeeper.com";
     public static int PORT = 1935;
     public static String APP_NAME = "live";
     public static String WOWZA_USERNAME = "live";
-    public static String WOWZA_PASSWORD = "123";
+    public static String WOWZA_PASSWORD = "12345";
 
 
     //Video Configuration

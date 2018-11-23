@@ -48,16 +48,14 @@ import com.wowza.gocoder.sdk.api.monitor.WOWZStreamingStat;
 import com.wowza.gocoder.sdk.api.status.WOWZStatus;
 import com.wowza.gocoder.sdk.api.status.WOWZStatusCallback;
 
-/**
- * Created by Rishabh Saxena.
- */
+//import wowza.app.wowzapoc.config.GoCoderSDKPrefs;
 
 public abstract class GoCoderSDKActivityBase extends BaseActivity
         implements WOWZStatusCallback {
 
     private final static String TAG = GoCoderSDKActivityBase.class.getSimpleName();
 
-    private static final String SDK_SAMPLE_APP_LICENSE_KEY = "GOSK-AB45-010C-5EBF-AD3B-73FB";
+    private static final String SDK_SAMPLE_APP_LICENSE_KEY = "GOSK-C045-010C-5D2A-9061-F0DF";
 
     private static final int PERMISSIONS_REQUEST_CODE = 0x1;
 
@@ -259,7 +257,7 @@ public abstract class GoCoderSDKActivityBase extends BaseActivity
                             | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                             | View.SYSTEM_UI_FLAG_FULLSCREEN
+                             |View.SYSTEM_UI_FLAG_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
 

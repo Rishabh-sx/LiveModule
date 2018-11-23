@@ -10,11 +10,13 @@ import io.socket.client.Socket;
 
 public interface CameraOverlayView extends BaseView {
 
-    void initVariables(String userId, Socket socketInstance);
+    void initVariables( Socket socketInstance);
 
     void setListeners();
 
     void finishActivity();
 
     void sendBroadcastToEndStream();
+
+    void getIntentData();
 }

@@ -37,6 +37,7 @@ import com.rishabh.livemodule.live.live.cameraOverlay.CameraOverlayActivity;
 import com.rishabh.livemodule.live.ui.AutoFocusListener;
 import com.rishabh.livemodule.live.ui.MultiStateButton;
 import com.rishabh.livemodule.live.ui.TimerView;
+import com.rishabh.livemodule.utils.AppConstants;
 import com.wowza.gocoder.sdk.api.devices.WOWZCamera;
 import com.wowza.gocoder.sdk.api.devices.WOWZCameraView;
 import com.wowza.gocoder.sdk.api.errors.WOWZError;
@@ -70,12 +71,15 @@ public class LiveCameraActivity extends CameraActivityBase implements LiveView {
     private String streamId;
     private LivePresenter livePresenter;
     private BroadcastReceiver commentOverlayActivityReceiver;
+    private String email;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         livePresenter = new LivePresenter(this);
+        livePresenter.getIntentData();
         livePresenter.init();
     }
 
@@ -84,9 +88,16 @@ public class LiveCameraActivity extends CameraActivityBase implements LiveView {
         return R.layout.activity_live_camera;
     }
 
+
+    @Override
+    public void getIntentData() {
+        email = getIntent().getStringExtra(AppConstants.EMAIL);
+        name = getIntent().getStringExtra(AppConstants.NAME);
+        streamId = getIntent().getStringExtra(AppConstants.STREAMID);
+    }
+
     @Override
     protected void initVariables() {
-
     }
 
     @Override
@@ -114,16 +125,18 @@ public class LiveCameraActivity extends CameraActivityBase implements LiveView {
         }
 
 
-        if(!streamId.isEmpty())
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivityForResult(new Intent(LiveCameraActivity.this, CameraOverlayActivity.class)
-                        .putExtra("streamId", streamId), 1);
-            }
-        }, 2);
+        if (!streamId.isEmpty())
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startActivityForResult(new Intent(LiveCameraActivity.this, CameraOverlayActivity.class)
+                            .putExtra(AppConstants.STREAMID, streamId)
+                            .putExtra(AppConstants.NAME, name)
+                            .putExtra(AppConstants.EMAIL, email), 1);
+                }
+            }, 2);
         else
-            Log.e(TAG, "onResume: Socket Error, Stream id" );
+            Log.e(TAG, "onResume: Socket Error, Stream id");
 
 
     }
@@ -137,46 +150,6 @@ public class LiveCameraActivity extends CameraActivityBase implements LiveView {
         }
     }
 
-    private class CustomTask extends AsyncTask<Void, Void, Void> {
-
-        protected Void doInBackground(Void... param) {
-            return null;
-        }
-
-        protected void onPostExecute(Void param) {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    startActivity(new Intent(LiveCameraActivity.this, CameraOverlayActivity.class)
-                            .putExtra("streamId", streamId));
-                }
-            }, 2);
-
-            //Print Toast or open dialog
-        }
-    }
-
-    private void openCommentOverlay() {
-        startActivity(new Intent(LiveCameraActivity.this, CameraOverlayActivity.class)
-                .putExtra("streamId", streamId));
-
-        //   new CustomTask().execute((Void[])null);
-        /*    runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(LiveCameraActivity.this, CameraOverlayActivity.class)
-                        .putExtra("streamId",streamId));
-
-            }
-        });
-    */    /*new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(LiveCameraActivity.this, CameraOverlayActivity.class)
-                        .putExtra("streamId",streamId));
-            }
-        }, 2);*/
-    }
 
     @Override
     protected void onPause() {
@@ -275,7 +248,6 @@ public class LiveCameraActivity extends CameraActivityBase implements LiveView {
                 sendUISyncToCommentOverlay("gone");
             }
         }
-
         return disableControls;
     }
 
@@ -315,7 +287,6 @@ public class LiveCameraActivity extends CameraActivityBase implements LiveView {
     @Override
     public void onWZStatus(WOWZStatus goCoderStatus) {
         super.onWZStatus(goCoderStatus);
-
         if (goCoderStatus.isStopping()) {
             sendStatusToCommentOverlay("broadcastStopped");
         } else {
@@ -332,10 +303,6 @@ public class LiveCameraActivity extends CameraActivityBase implements LiveView {
     }
 
 
-    @Override
-    public void setStreamId(String s) {
-        streamId = s;
-    }
 
     @Override
     public void setupLiveStream() {
@@ -352,7 +319,7 @@ public class LiveCameraActivity extends CameraActivityBase implements LiveView {
 
     @Override
     protected String getStreamId() {
-        return streamId;//"myStream";
+        return streamId;
     }
 
     /**
@@ -375,7 +342,7 @@ public class LiveCameraActivity extends CameraActivityBase implements LiveView {
     private void eventReceived(Intent intent) {
         switch (intent.getStringExtra("key")) {
             case "end_stream":
-     //           cameraPreview.stopPreview();
+                //           cameraPreview.stopPreview();
                 endBroadcast();
                 break;
             case "toggle_camera":
@@ -389,4 +356,6 @@ public class LiveCameraActivity extends CameraActivityBase implements LiveView {
         super.onDestroy();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(commentOverlayActivityReceiver);
     }
+
+
 }

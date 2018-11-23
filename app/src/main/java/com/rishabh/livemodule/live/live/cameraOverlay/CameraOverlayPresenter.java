@@ -34,15 +34,15 @@ public class CameraOverlayPresenter extends BasePresenter<CameraOverlayView> imp
 
     }
 
-    public void init() {
+    public void init(String email, String name) {
         if (getView() != null) {
-            getView().initVariables(model.getUserId(),getSocketInstance());
+            getView().initVariables(getSocketInstance(email,name));
             getView().setListeners();
         }
     }
 
-    public Socket getSocketInstance() {
-        return model.getSocket();
+    public Socket getSocketInstance(String email, String name) {
+        return model.getSocket(email,name);
     }
 
     public void onShareButtonClicked(String streamId, String streamDuration, boolean isSaved) {
@@ -82,5 +82,10 @@ public class CameraOverlayPresenter extends BasePresenter<CameraOverlayView> imp
 
     public void onSaveButtonClicked() {
 
+    }
+
+    public void getIntentData() {
+    if(getView()!=null)
+        getView().getIntentData();
     }
 }

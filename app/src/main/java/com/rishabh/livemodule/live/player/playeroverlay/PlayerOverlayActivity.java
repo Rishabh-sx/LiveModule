@@ -237,7 +237,7 @@ public class PlayerOverlayActivity extends BaseActivity implements PlayerOverlay
         mSocket = socket;
         mCommentsList = new ArrayList<>();
         mStreamId = liveIntentData.getStreamId();
-     //   bundle = user;
+
     }
 
     @Override

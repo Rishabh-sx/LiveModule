@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -30,7 +31,16 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         setContentView(R.layout.base_activity);
         baseContainer = findViewById(R.id.base_container);
         setLayout();
+        initVariables();
         ButterKnife.bind(this);
+
+    }
+
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        setListeners();
     }
 
     protected abstract void initVariables();

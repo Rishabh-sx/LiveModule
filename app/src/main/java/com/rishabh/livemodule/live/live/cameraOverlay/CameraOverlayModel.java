@@ -12,6 +12,7 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.HashMap;
 
+
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
@@ -40,9 +41,9 @@ public class CameraOverlayModel extends BaseModel<CameraOverlayModelListener> {
 
     }
 
-    public String getUserId() {
+    /*public String getUserId() {
         return getDataManager().getUserId();
-    }
+    }*/
 
 
     /**
@@ -50,7 +51,7 @@ public class CameraOverlayModel extends BaseModel<CameraOverlayModelListener> {
      *
      * @return socket instance
      */
-    public Socket getSocket() {
+    public Socket getSocket(String email, String name) {
         try {
             HostnameVerifier myHostnameVerifier = new HostnameVerifier() {
                 @Override
@@ -105,9 +106,10 @@ public class CameraOverlayModel extends BaseModel<CameraOverlayModelListener> {
             ///options.forceNew = true;
           //  options.callFactory = okHttpClient;
           //  options.webSocketFactory = okHttpClient;
-            options.query = "userId=" + getDataManager().getUserId();
+            options.query = "name=" + name +"&email="+ email;
+
             mSocket = IO.socket(AppConstants.SOCKET_URL, options);
-            //mSocket.connect();
+
 
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);

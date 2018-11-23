@@ -7,7 +7,9 @@ import com.rishabh.livemodule.base.BaseView;
  */
 
 public interface LiveView extends BaseView {
-    void setStreamId(String s);
+    //void setStreamId(String s);
 
     void setupLiveStream();
+
+    void getIntentData();
 }
