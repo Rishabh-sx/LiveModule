@@ -55,7 +55,7 @@ public abstract class GoCoderSDKActivityBase extends BaseActivity
 
     private final static String TAG = GoCoderSDKActivityBase.class.getSimpleName();
 
-    private static final String SDK_SAMPLE_APP_LICENSE_KEY = "GOSK-C045-010C-5D2A-9061-F0DF";
+    private static final String SDK_SAMPLE_APP_LICENSE_KEY = //Todo Add your key here;
 
     private static final int PERMISSIONS_REQUEST_CODE = 0x1;
 
